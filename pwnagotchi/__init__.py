@@ -6,7 +6,7 @@ import re
 import pwnagotchi.ui.view as view
 import pwnagotchi
 
-version = '1.1.0'
+version = '1.1.1'
 
 _name = None
 
@@ -103,7 +103,7 @@ def shutdown():
     if view.ROOT:
         view.ROOT.on_shutdown()
         # give it some time to refresh the ui
-        time.sleep(5)
+        time.sleep(10)
     os.system("sync")
     os.system("halt")
 

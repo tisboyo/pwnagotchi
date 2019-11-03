@@ -20,15 +20,9 @@
       ]
     },
     {
-      "type": "ansible-local",
-      "playbook_file": "pwnagotchi.yml",
-      "command": "ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 PWN_VERSION={{user `pwn_version`}} PWN_HOSTNAME={{user `pwn_hostname`}} ansible-playbook"
-    },
-    {
-      "type": "shell",
-      "inline": [
-        "sed -i 's/^#\\(.+\\)/\\1/g' /etc/ld.so.preload"
-      ]
+      "type": "file",
+      "source": "data/usr/bin/pwnlib",
+      "destination": "/usr/bin/pwnlib"
     },
     {
       "type": "file",
@@ -47,13 +41,38 @@
     },
     {
       "type": "file",
-      "source": "data/usr/bin/bootblink",
-      "destination": "/usr/bin/bootblink"
+      "source": "data/usr/bin/monstart",
+      "destination": "/usr/bin/monstart"
     },
     {
       "type": "file",
-      "source": "data/usr/bin/monstart",
-      "destination": "/usr/bin/monstart"
+      "source": "data/usr/bin/hdmion",
+      "destination": "/usr/bin/hdmion"
+    },
+    {
+      "type": "file",
+      "source": "data/usr/bin/hdmioff",
+      "destination": "/usr/bin/hdmioff"
+    },
+    {
+      "type": "file",
+      "source": "data/etc/network/interfaces.d/lo-cfg",
+      "destination": "/etc/network/interfaces.d/lo-cfg"
+    },
+    {
+      "type": "file",
+      "source": "data/etc/network/interfaces.d/wlan0-cfg",
+      "destination": "/etc/network/interfaces.d/wlan0-cfg"
+    },
+    {
+      "type": "file",
+      "source": "data/etc/network/interfaces.d/usb0-cfg",
+      "destination": "/etc/network/interfaces.d/usb0-cfg"
+    },
+    {
+      "type": "file",
+      "source": "data/etc/network/interfaces.d/eth0-cfg",
+      "destination": "/etc/network/interfaces.d/eth0-cfg"
     },
     {
       "type": "file",
@@ -69,6 +88,23 @@
       "type": "file",
       "source": "data/etc/systemd/system/bettercap.service",
       "destination": "/etc/systemd/system/bettercap.service"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "chmod +x /usr/bin/*"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "pwnagotchi.yml",
+      "command": "ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 PWN_VERSION={{user `pwn_version`}} PWN_HOSTNAME={{user `pwn_hostname`}} ansible-playbook"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sed -i 's/^#\\(.+\\)/\\1/g' /etc/ld.so.preload"
+      ]
     }
   ]
 }
